@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد سهل | سهل برنت - حلول الدعم الفني وصيانة الطابعات</title>
+    <!-- استدعاء خط Cairo العربي من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- استدعاء أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* المتغيرات (الألوان والخطوط) */
+        :root {
+            --primary-color: #0d6efd; /* أزرق تقني */
+            --primary-hover: #0b5ed7;
+            --bg-color: #0f172a; /* كحلي داكن جداً للخلفية */
+            --card-bg: #1e293b; /* لون البطاقات */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-family: 'Cairo', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* إعدادات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* شريط التنقل (Navbar) */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* الواجهة الرئيسية (Hero Section) */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(13, 110, 253, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(13, 110, 253, 0.1), transparent 40%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* قسم الخدمات (Services) */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .services {
+            padding: 100px 0;
+            background-color: #0b1120;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(13, 110, 253, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* قطاعات العمل (Industries) */
+        .industries {
+            padding: 100px 0;
+        }
+
+        .industries-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .industry-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+        }
+
+        .industry-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* من أنا (About) */
+        .about {
+            padding: 100px 0;
+            background-color: #0b1120;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px; /* ليكون على اليسار في الواجهة العربية */
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* الفوتر (Footer) */
+        footer {
+            background-color: #020617;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-social {
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* تجاوب الشاشات (Responsive) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* يمكن إضافة قائمة همبرغر لاحقاً */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .hero-btns {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">سهل <span>برنت</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#about">من أنا</a></li>
+            </ul>
+            <!-- يرجى استبدال رقم الهاتف برقمك الفعلي -->
+            <a href="https://wa.me/201000000000" target="_blank" class="btn-primary">
+                تواصل معي <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>شريكك التقني الموثوق في <span>الصيانة والدعم الفني</span></h1>
+            <p>أنا محمد سهل، مهندس صيانة طابعات وشبكات ودعم فني متخصص. أقدم حلولاً متكاملة للشركات والمراكز الطبية في الإسكندرية والبحيرة لضمان استمرارية عملك بكفاءة عالية وبدون توقف.</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn-primary">اكتشف خدماتي</a>
+                <!-- يرجى وضع رابط حسابك على لينكدإن هنا -->
+                <a href="#" target="_blank" class="btn-outline">
+                    <i class="fa-brands fa-linkedin"></i> ملفي المهني
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <p>ماذا أقدم؟</p>
+                <h2>خدمات احترافية لضمان راحة بالك</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- خدمة 1 -->
+                <div class="service-card">
+                    <i class="fa-solid fa-print service-icon"></i>
+                    <h3>صيانة الطابعات وماكينات التصوير</h3>
+                    <p>فحص وتشخيص دقيق، صيانة دورية، وإصلاح أعطال جميع الماركات (HP, Xerox, Canon, Kyocera, Lexmark) لضمان أعلى جودة طباعة.</p>
+                </div>
+                
+                <!-- خدمة 2 -->
+                <div class="service-card">
+                    <i class="fa-solid fa-network-wired service-icon"></i>
+                    <h3>الدعم الفني للكمبيوتر والشبكات</h3>
+                    <p>صيانة أجهزة الكمبيوتر (IT Support)، حل مشاكل أنظمة الويندوز، تأسيس وتكوين شبكات الطباعة لربط الأجهزة بكفاءة.</p>
+                </div>
+                
+                <!-- خدمة 3 -->
+                <div class="service-card">
+                    <i class="fa-solid fa-file-invoice-dollar service-icon"></i>
+                    <h3>تقييم وتخفيض تكاليف الطباعة</h3>
+                    <p>إجراء عمليات تدقيق (Print Audit) للشركات لتقييم كفاءة المعدات الحالية، وتقديم حلول عملية لتقليل الهالك واستهلاك الأحبار.</p>
+                </div>
+                
+                <!-- خدمة 4 -->
+                <div class="service-card">
+                    <i class="fa-solid fa-gears service-icon"></i>
+                    <h3>حلول أتمتة الصيانة</h3>
+                    <p>برمجة نصوص برمجية (Scripts & Batch Files) لتسريع عمليات الصيانة الروتينية، وحل مشاكل تعليق أوامر الطباعة (Spooler) بضغطة زر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قطاعات العمل -->
+    <section class="industries">
+        <div class="container">
+            <div class="section-title">
+                <p>لمن أقدم خدماتي؟</p>
+                <h2>قطاعات أثق بها وتثق بي</h2>
+            </div>
+            <div class="industries-flex">
+                <div class="industry-item">
+                    <i class="fa-regular fa-building"></i>
+                    <h3>الشركات والمكاتب الإدارية</h3>
+                </div>
+                <div class="industry-item">
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <h3>المستشفيات ومراكز الأشعة</h3>
+                </div>
+                <div class="industry-item">
+                    <i class="fa-solid fa-school"></i>
+                    <h3>المؤسسات التعليمية</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- من أنا -->
+    <section id="about" class="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <div class="section-title" style="text-align: right; margin-bottom: 30px;">
+                    <p>نبذة عني</p>
+                    <h2>محمد سهل - Sahl Print</h2>
+                </div>
+                <p>كخبير في مجال تكنولوجيا المعلومات وصيانة أنظمة الطباعة، أدرك تماماً أن تعطل جهاز واحد قد يوقف سير العمل في عيادة طبية أو شركة بأكملها. لذلك، هدفي ليس مجرد "تصليح الأعطال"، بل بناء نظام تقني مستقر يوفر لك راحة البال.</p>
+                <p>أقوم بزيارات دورية ومتابعة مستمرة (كما أفعل مع شركاء النجاح مثل مركز النزهة سكان)، لضمان جاهزية المعدات وتحديثها باستمرار وتوفير الأحبار وقطع الغيار اللازمة قبل نفادها.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>+5</h4>
+                        <p>سنوات من الخبرة العملية</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>24/7</h4>
+                        <p>دعم واستجابة سريعة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر الواتساب العائم (يرجى تعديل الرقم) -->
+    <a href="https://wa.me/201000000000" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <!-- روابط السوشيال ميديا -->
+                <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <p class="footer-text">جميع الحقوق محفوظة &copy; 2026 محمد سهل | سهل برنت</p>
+        </div>
+    </footer>
+
+    <!-- سكربت بسيط للتمرير السلس (Smooth Scroll) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
