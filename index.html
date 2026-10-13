@@ -161,7 +161,7 @@
         /* قسم الخدمات (Services) */
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
         }
 
         .section-title h2 {
@@ -179,40 +179,88 @@
             background-color: #0b1120;
         }
 
+        /* عناوين فئات الخدمات */
+        .category-header {
+            margin: 60px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(13, 110, 253, 0.2);
+        }
+        
+        .category-header h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            display: inline-block;
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
         .service-card {
             background-color: var(--card-bg);
-            padding: 40px 30px;
+            padding: 35px 30px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: rgba(13, 110, 253, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
             margin-bottom: 20px;
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
+        .service-card h4 {
+            font-size: 1.3rem;
             margin-bottom: 15px;
+            color: var(--primary-color);
         }
 
-        .service-card p {
+        .service-card > p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 0;
+        }
+
+        /* تنسيق القوائم داخل بطاقات الخدمات */
+        .service-features {
+            list-style: none;
+            margin-top: auto;
+        }
+
+        .service-features li {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .service-features li i {
+            color: var(--primary-color);
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+
+        .service-card .target-audience {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         /* قطاعات العمل (Industries) */
@@ -285,7 +333,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            left: 30px; /* ليكون على اليسار في الواجهة العربية */
+            left: 30px;
             width: 60px;
             height: 60px;
             background-color: #25d366;
@@ -334,18 +382,11 @@
 
         /* تجاوب الشاشات (Responsive) */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* يمكن إضافة قائمة همبرغر لاحقاً */
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-            .hero-btns {
-                flex-direction: column;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .about-content { flex-direction: column; }
+            .hero-btns { flex-direction: column; }
+            .category-header h3 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -360,7 +401,6 @@
                 <li><a href="#services">الخدمات</a></li>
                 <li><a href="#about">من أنا</a></li>
             </ul>
-            <!-- يرجى استبدال رقم الهاتف برقمك الفعلي -->
             <a href="https://wa.me/201095120662" target="_blank" class="btn-primary">
                 تواصل معي <i class="fa-brands fa-whatsapp"></i>
             </a>
@@ -374,7 +414,6 @@
             <p>أنا محمد سهل، مهندس صيانة طابعات وشبكات ودعم فني متخصص. أقدم حلولاً متكاملة للشركات والمراكز الطبية في الإسكندرية والبحيرة لضمان استمرارية عملك بكفاءة عالية وبدون توقف.</p>
             <div class="hero-btns">
                 <a href="#services" class="btn-primary">اكتشف خدماتي</a>
-                <!-- يرجى وضع رابط حسابك على لينكدإن هنا -->
                 <a href="#" target="_blank" class="btn-outline">
                     <i class="fa-brands fa-linkedin"></i> ملفي المهني
                 </a>
@@ -382,43 +421,185 @@
         </div>
     </section>
 
-    <!-- قسم الخدمات -->
+    <!-- قسم الخدمات الشامل -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-title">
-                <p>ماذا أقدم؟</p>
-                <h2>خدمات احترافية لضمان راحة بالك</h2>
+                <p>خدمات سهل برنت</p>
+                <h2>إدارة شاملة لبيئة الطباعة والدعم الفني</h2>
             </div>
             
+            <!-- الفئة الأولى: الصيانة والدعم الفني -->
+            <div class="category-header">
+                <h3>أولًا: الصيانة والدعم الفني</h3>
+            </div>
             <div class="services-grid">
-                <!-- خدمة 1 -->
                 <div class="service-card">
-                    <i class="fa-solid fa-print service-icon"></i>
-                    <h3>صيانة الطابعات وماكينات التصوير</h3>
-                    <p>فحص وتشخيص دقيق، صيانة دورية، وإصلاح أعطال جميع الماركات (HP, Xerox, Canon, Kyocera, Lexmark) لضمان أعلى جودة طباعة.</p>
+                    <i class="fa-solid fa-screwdriver-wrench service-icon"></i>
+                    <h4>01 | صيانة وإصلاح الطابعات وآلات التصوير</h4>
+                    <p>تشخيص وإصلاح الأعطال الفنية للطابعات والـ Copiers والماسحات الضوئية وأجهزة الفاكس بمختلف أنواعها.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> تشخيص العطل وتحديد سببه بدقة.</li>
+                        <li><i class="fa-solid fa-check"></i> إصلاح الأعطال الميكانيكية والإلكترونية.</li>
+                        <li><i class="fa-solid fa-check"></i> التعامل مع مشاكل جودة الطباعة.</li>
+                        <li><i class="fa-solid fa-check"></i> صيانة أجهزة Laser و Inkjet.</li>
+                        <li><i class="fa-solid fa-check"></i> توفير قطع الغيار والمستلزمات المناسبة.</li>
+                        <li><i class="fa-solid fa-check"></i> خدمة داخل موقع العميل أو من خلال الورشة.</li>
+                    </ul>
+                    <div class="target-audience">مناسبة لـ: الشركات، العيادات، المعامل، المدارس والمؤسسات.</div>
                 </div>
                 
-                <!-- خدمة 2 -->
                 <div class="service-card">
-                    <i class="fa-solid fa-network-wired service-icon"></i>
-                    <h3>الدعم الفني للكمبيوتر والشبكات</h3>
-                    <p>صيانة أجهزة الكمبيوتر (IT Support)، حل مشاكل أنظمة الويندوز، تأسيس وتكوين شبكات الطباعة لربط الأجهزة بكفاءة.</p>
+                    <i class="fa-solid fa-shield-halved service-icon"></i>
+                    <h4>02 | الصيانة الوقائية الدورية</h4>
+                    <p>برنامج صيانة استباقي يهدف إلى اكتشاف المشكلات قبل تحولها إلى أعطال تؤثر على سير العمل.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> فحص شامل لحالة الجهاز.</li>
+                        <li><i class="fa-solid fa-check"></i> تنظيف الأجزاء الداخلية بعناية.</li>
+                        <li><i class="fa-solid fa-check"></i> مراجعة الأجزاء الاستهلاكية.</li>
+                        <li><i class="fa-solid fa-check"></i> اختبار جودة الطباعة.</li>
+                        <li><i class="fa-solid fa-check"></i> اكتشاف مؤشرات الأعطال المبكرة.</li>
+                        <li><i class="fa-solid fa-check"></i> تسجيل ملاحظات الصيانة والمتابعة.</li>
+                    </ul>
                 </div>
-                
-                <!-- خدمة 3 -->
+
                 <div class="service-card">
-                    <i class="fa-solid fa-file-invoice-dollar service-icon"></i>
-                    <h3>تقييم وتخفيض تكاليف الطباعة</h3>
-                    <p>إجراء عمليات تدقيق (Print Audit) للشركات لتقييم كفاءة المعدات الحالية، وتقديم حلول عملية لتقليل الهالك واستهلاك الأحبار.</p>
-                </div>
-                
-                <!-- خدمة 4 -->
-                <div class="service-card">
-                    <i class="fa-solid fa-gears service-icon"></i>
-                    <h3>حلول أتمتة الصيانة</h3>
-                    <p>برمجة نصوص برمجية (Scripts & Batch Files) لتسريع عمليات الصيانة الروتينية، وحل مشاكل تعليق أوامر الطباعة (Spooler) بضغطة زر.</p>
+                    <i class="fa-solid fa-headset service-icon"></i>
+                    <h4>03 | دعم الطباعة والأجهزة الطرفية</h4>
+                    <p>دعم فني متخصص للمشكلات المرتبطة باستخدام الطابعات والأجهزة الطرفية داخل بيئة العمل.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> تعريف وتثبيت الأجهزة الجديدة.</li>
+                        <li><i class="fa-solid fa-check"></i> حل مشاكل الاتصال والشبكات.</li>
+                        <li><i class="fa-solid fa-check"></i> إعداد الطباعة على أجهزة المستخدمين.</li>
+                        <li><i class="fa-solid fa-check"></i> التعامل مع تعليق أوامر الطباعة (Print Queue).</li>
+                        <li><i class="fa-solid fa-check"></i> المساعدة في مشاكل الطباعة عبر الشبكة.</li>
+                        <li><i class="fa-solid fa-check"></i> الدعم الفني المرتبط بالأجهزة الطرفية الأخرى.</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- الفئة الثانية: المستلزمات وإدارة التشغيل -->
+            <div class="category-header">
+                <h3>ثانيًا: المستلزمات وإدارة التشغيل</h3>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-fill-drip service-icon"></i>
+                    <h4>04 | توريد الأحبار والمستهلكات</h4>
+                    <p>توفير وتوريد جميع مواد التشغيل اللازمة لضمان استمرار العمل دون انقطاع.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> توفير أحبار وتونر أصلية ومعتمدة.</li>
+                        <li><i class="fa-solid fa-check"></i> مستلزمات الطباعة بأنواعها.</li>
+                        <li><i class="fa-solid fa-check"></i> قطع الغيار الاستهلاكية.</li>
+                        <li><i class="fa-solid fa-check"></i> مستهلكات الطابعات وآلات التصوير.</li>
+                    </ul>
+                    <div class="target-audience">يتم التحديد طبقًا لطراز الجهاز وطبيعة الاستخدام.</div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fa-solid fa-boxes-stacked service-icon"></i>
+                    <h4>05 | إدارة المستهلكات الذكية</h4>
+                    <p>بدلًا من انتظار نفاد التونر، نقوم بتنظيم المتابعة وإعادة التوريد استباقياً.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> متابعة دقيقة للاحتياجات الدورية.</li>
+                        <li><i class="fa-solid fa-check"></i> تنظيم وجدولة طلبات التوريد.</li>
+                        <li><i class="fa-solid fa-check"></i> منع توقف الطباعة المفاجئ.</li>
+                        <li><i class="fa-solid fa-check"></i> متابعة الأجهزة ذات الاستهلاك المرتفع.</li>
+                        <li><i class="fa-solid fa-check"></i> تنظيم الدورة ضمن عقود الخدمة.</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fa-solid fa-plug-circle-check service-icon"></i>
+                    <h4>06 | تجهيز وتركيب الطابعات</h4>
+                    <p>خدمة شاملة لتجهيز الأجهزة الجديدة أو المنقولة ودمجها بسلاسة في بيئة عملك.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> فك، تركيب وتجهيز الأجهزة.</li>
+                        <li><i class="fa-solid fa-check"></i> إعداد وتثبيت أحدث التعريفات.</li>
+                        <li><i class="fa-solid fa-check"></i> تخصيص إعدادات الطباعة للمستخدمين.</li>
+                        <li><i class="fa-solid fa-check"></i> ربط الجهاز بالشبكة الداخلية.</li>
+                        <li><i class="fa-solid fa-check"></i> اختبارات التشغيل الشاملة قبل التسليم.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- الفئة الثالثة: تحليل وتطوير بيئة الطباعة -->
+            <div class="category-header">
+                <h3>ثالثًا: تحليل وتطوير بيئة الطباعة</h3>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-magnifying-glass-chart service-icon"></i>
+                    <h4>07 | Print Audit | تقييم بيئة الطباعة</h4>
+                    <p>فحص شامل لفهم تكلفة الطباعة الفعلية وطريقة تشغيلها وليس مجرد بيع جهاز.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> حصر الأجهزة وتقييم حالتها.</li>
+                        <li><i class="fa-solid fa-check"></i> دراسة ومراجعة استهلاك الأحبار.</li>
+                        <li><i class="fa-solid fa-check"></i> تحديد الأجهزة القديمة وغير المناسبة.</li>
+                        <li><i class="fa-solid fa-check"></i> تحديد فرص تحسين التكلفة والكفاءة.</li>
+                        <li><i class="fa-solid fa-check"></i> إعداد تقرير مبدئي احترافي بالنتائج.</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fa-solid fa-money-bill-trend-up service-icon"></i>
+                    <h4>08 | تحسين تكلفة الطباعة</h4>
+                    <p>مراجعة أسلوب الطباعة لاقتراح طرق لتقليل النفقات المهدرة وتحسين الاستخدام.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> تحليل أنماط استخدام الأجهزة.</li>
+                        <li><i class="fa-solid fa-check"></i> مراجعة وتقييم تكلفة المستهلكات.</li>
+                        <li><i class="fa-solid fa-check"></i> اكتشاف الاستخدام غير الفعال للورق والحبر.</li>
+                        <li><i class="fa-solid fa-check"></i> اقتراح توزيع أفضل للأجهزة بالأقسام.</li>
+                        <li><i class="fa-solid fa-check"></i> مقارنة التكاليف واقتراح بدائل اقتصادية.</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fa-solid fa-file-medical service-icon"></i>
+                    <h4>09 | Printer Health Report</h4>
+                    <p>تقرير هندسي دوري للإدارة يوضح حالة الأجهزة لاتخاذ القرارات قبل حدوث الأعطال.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> رصد حالة الأجهزة بدقة.</li>
+                        <li><i class="fa-solid fa-check"></i> تتبع الأعطال المتكررة وأسبابها.</li>
+                        <li><i class="fa-solid fa-check"></i> تحديد احتياجات الصيانة والمستهلكات.</li>
+                        <li><i class="fa-solid fa-check"></i> تدوين ملاحظات الفني المتخصص.</li>
+                        <li><i class="fa-solid fa-check"></i> تقديم التوصيات الهندسية المقترحة.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- الفئة الرابعة: إدارة وتشغيل أسطول الطباعة -->
+            <div class="category-header">
+                <h3>رابعًا: إدارة وتشغيل أسطول الطباعة</h3>
+            </div>
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                <div class="service-card">
+                    <i class="fa-solid fa-sitemap service-icon"></i>
+                    <h4>10 | إدارة أسطول الطباعة بالكامل</h4>
+                    <p>نقطة خدمة موحدة لإدارة مجموعة الطابعات وآلات التصوير داخل مؤسستك بدل التعامل الفردي.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> حصر وتنظيم بيانات الأجهزة مركزياً.</li>
+                        <li><i class="fa-solid fa-check"></i> متابعة دورة الصيانة والأعطال.</li>
+                        <li><i class="fa-solid fa-check"></i> جدولة طلبات المستهلكات.</li>
+                        <li><i class="fa-solid fa-check"></i> تحليل الاستخدام وإصدار تقارير دورية.</li>
+                    </ul>
+                    <div class="target-audience">مثالية للمؤسسات والمستشفيات ذات العدد الكبير من الأجهزة.</div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fa-solid fa-satellite-dish service-icon"></i>
+                    <h4>11 | المراقبة عن بُعد (Remote Monitoring)</h4>
+                    <p>متابعة ذكية للأجهزة المدعومة لاكتشاف مؤشرات التشغيل والاستهلاك قبل أن تصبح مشكلة.</p>
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> مراقبة العدادات وعدد الصفحات.</li>
+                        <li><i class="fa-solid fa-check"></i> تتبع مستويات الأحبار لحظياً.</li>
+                        <li><i class="fa-solid fa-check"></i> اكتشاف التنبيهات والأعطال عن بُعد.</li>
+                        <li><i class="fa-solid fa-check"></i> التخطيط المسبق للصيانة والتوريد.</li>
+                    </ul>
+                    <div class="target-audience">جزء أساسي من نموذج Managed Print Services.</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -439,8 +620,8 @@
                     <h3>المستشفيات ومراكز الأشعة</h3>
                 </div>
                 <div class="industry-item">
-                    <i class="fa-solid fa-school"></i>
-                    <h3>المؤسسات التعليمية</h3>
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <h3>مكاتب المحاماة والاستشارات</h3>
                 </div>
             </div>
         </div>
@@ -454,12 +635,12 @@
                     <p>نبذة عني</p>
                     <h2>محمد سهل - Sahl Print</h2>
                 </div>
-                <p>كخبير في مجال تكنولوجيا المعلومات وصيانة أنظمة الطباعة، أدرك تماماً أن تعطل جهاز واحد قد يوقف سير العمل في عيادة طبية أو شركة بأكملها. لذلك، هدفي ليس مجرد "تصليح الأعطال"، بل بناء نظام تقني مستقر يوفر لك راحة البال.</p>
-                <p>أقوم بزيارات دورية ومتابعة مستمرة (كما أفعل مع شركاء النجاح مثل مركز النزهة سكان)، لضمان جاهزية المعدات وتحديثها باستمرار وتوفير الأحبار وقطع الغيار اللازمة قبل نفادها.</p>
+                <p>بخبرة تتجاوز الـ 10 سنوات كمهندس صيانة طابعات وشبكات ودعم فني متخصص، أدرك تماماً أن تعطل جهاز واحد قد يوقف سير العمل في عيادة طبية أو شركة بأكملها. لذلك، هدفي ليس مجرد "تصليح الأعطال"، بل بناء نظام تقني مستقر يوفر لك ولشركتك راحة البال.</p>
+                <p>أقوم بزيارات دورية ومتابعة مستمرة لضمان جاهزية المعدات وتحديثها باستمرار وتوفير الأحبار وقطع الغيار اللازمة قبل نفادها، مع تقديم استشارات هندسية لتقليل تكاليف الهالك.</p>
                 
                 <div class="about-stats">
                     <div class="stat-item">
-                        <h4>+5</h4>
+                        <h4>+10</h4>
                         <p>سنوات من الخبرة العملية</p>
                     </div>
                     <div class="stat-item">
@@ -471,7 +652,7 @@
         </div>
     </section>
 
-    <!-- زر الواتساب العائم (يرجى تعديل الرقم) -->
+    <!-- زر الواتساب العائم -->
     <a href="https://wa.me/201095120662" target="_blank" class="whatsapp-float">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -481,14 +662,14 @@
         <div class="container">
             <div class="footer-social">
                 <!-- روابط السوشيال ميديا -->
-                <a href="https://www.linkedin.com/in/muhammed-sahl" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
             </div>
             <p class="footer-text">جميع الحقوق محفوظة &copy; 2026 محمد سهل | سهل برنت</p>
         </div>
     </footer>
 
-    <!-- سكربت بسيط للتمرير السلس (Smooth Scroll) -->
+    <!-- سكربت بسيط للتمرير السلس -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
