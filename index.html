@@ -14,6 +14,7 @@
         :root {
             --primary-color: #0d6efd; /* أزرق تقني */
             --primary-hover: #0b5ed7;
+            --whatsapp-color: #25d366;
             --bg-color: #0f172a; /* كحلي داكن جداً للخلفية */
             --card-bg: #1e293b; /* لون البطاقات */
             --text-main: #f8fafc;
@@ -329,6 +330,89 @@
             color: var(--text-main);
         }
 
+        /* قسم اتصل بي (Contact Section) */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--bg-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background-color: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(13, 110, 253, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-card .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(13, 110, 253, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-card.whatsapp-card .icon-box {
+            background-color: rgba(37, 211, 102, 0.1);
+            color: var(--whatsapp-color);
+        }
+
+        .contact-card.whatsapp-card:hover {
+            border-color: rgba(37, 211, 102, 0.4);
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-card.whatsapp-card a:hover {
+            color: var(--whatsapp-color);
+        }
+
+        .ltr-text {
+            direction: ltr;
+            display: inline-block;
+        }
+
         /* زر الواتساب العائم */
         .whatsapp-float {
             position: fixed;
@@ -336,7 +420,7 @@
             left: 30px;
             width: 60px;
             height: 60px;
-            background-color: #25d366;
+            background-color: var(--whatsapp-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -400,6 +484,7 @@
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#services">الخدمات</a></li>
                 <li><a href="#about">من أنا</a></li>
+                <li><a href="#contact">اتصل بي</a></li>
             </ul>
             <a href="https://wa.me/201095120662" target="_blank" class="btn-primary">
                 تواصل معي <i class="fa-brands fa-whatsapp"></i>
@@ -414,8 +499,8 @@
             <p>أنا محمد سهل، مهندس صيانة طابعات وشبكات ودعم فني متخصص. أقدم حلولاً متكاملة للشركات والمراكز الطبية في الإسكندرية والبحيرة لضمان استمرارية عملك بكفاءة عالية وبدون توقف.</p>
             <div class="hero-btns">
                 <a href="#services" class="btn-primary">اكتشف خدماتي</a>
-                <a href="#" target="_blank" class="btn-outline">
-                    <i class="fa-brands fa-linkedin"></i> ملفي المهني
+                <a href="#contact" class="btn-outline">
+                    <i class="fa-solid fa-phone"></i> تواصل معي الآن
                 </a>
             </div>
         </div>
@@ -647,6 +732,62 @@
                         <h4>24/7</h4>
                         <p>دعم واستجابة سريعة</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم اتصل بي (Contact) -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <p>تواصل مباشر</p>
+                <h2>اتصل بي</h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- الاسم -->
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3>الاسم</h3>
+                    <p>م. محمد سهل</p>
+                </div>
+
+                <!-- رقم الواتساب والاتصال -->
+                <div class="contact-card whatsapp-card">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3>واتساب واتصال</h3>
+                    <a href="https://wa.me/201095120662" target="_blank">
+                        <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.3rem;"></i>
+                        <span class="ltr-text">01095120662</span>
+                    </a>
+                </div>
+
+                <!-- رقم الهاتف الثاني -->
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <h3>رقم الهاتف</h3>
+                    <a href="tel:01201151561">
+                        <i class="fa-solid fa-phone" style="color: var(--primary-color); font-size: 1rem;"></i>
+                        <span class="ltr-text">01201151561</span>
+                    </a>
+                </div>
+
+                <!-- البريد الإلكتروني -->
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3>البريد الإلكتروني</h3>
+                    <a href="mailto:muhammedsahl8@gmail.com">
+                        <span class="ltr-text">muhammedsahl8@gmail.com</span>
+                    </a>
                 </div>
             </div>
         </div>
